@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>#30032020</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+
+  <style>
+
+        body{
+            background-image: url("bg.jpg");
+        }
+
+        /* FIREWORK */
+        @keyframes          firework-animation {
+            0% {background-color : #ce2029;}
+            25% {background-color : #fffcaf;}
+            50% {background-color : #ffe17c;}
+            75% {background-color : #ff664b;}
+            100% {background-color : #903843;}
+        }
+        @-webkit-keyframes  firework-animation {
+            0% {background-color : #ce2029;}
+            25% {background-color : #fffcaf;}
+            50% {background-color : #ffe17c;}
+            75% {background-color : #ff664b;}
+            100% {background-color : #903843;}
+        }
+        @keyframes          firework-seed-animation {
+            0% {background-color : #ff8426;}
+            25% {background-color : #fffc84;}
+            100% {background-color : #ff8426;}
+        }
+        @-webkit-keyframes  firework-seed-animation {
+            0% {background-color : #ff8426;}
+            25% {background-color : #fffc84;}
+            100% {background-color : #ff8426;}
+        }
+        @keyframes          firework-fade-animation {
+            0% {opacity : 1;}
+            50% {opacity : 1;}
+            100% {opacity : 0;}
+        }
+        @-webkit-keyframes  firework-fade-animation {
+            0% {opacity : 1;}
+            50% {opacity : 1;}
+            100% {opacity : 0;}
+        }
+        .fireWorkBatch {
+            z-index : 999;
+            position: absolute;
+            top : 0px;
+            left : 0px;
+            animation-name : firework-fade-animation;
+            animation-timing-function : cubic-bezier(0.5, 0, 1. 1);
+            animation-duration : 3s;
+        }
+        .fireWorkParticle {
+            z-index : 999;
+            position: absolute;
+            height : 5px;
+            width : 5px;
+            border-radius : 2.5px;
+            animation-name : firework-animation;
+            animation-timing-function : linear;
+            animation-duration : 0.2s;
+            animation-iteration-count : infinite;
+        }
+        .fireWorkSeed {
+            z-index : 999;
+            position: absolute;
+            height : 5px;
+            width : 5px;
+            border-radius : 5px;
+            animation-name : firework-seed-animation;
+            animation-timing-function : linear;
+            animation-duration : 1s;
+            animation-iteration-count : infinite;
+        }
+        /* CAKE */
+        .cake {
+          position: absolute;
+          width: 250px;
+          height: 200px;
+          left: 600px;
+          margin-top: 550px;
+         
+        }
+
+        @media screen and (max-width: 500px) {
+            .cake{
+                left: 70px;
+                size: 50%;
+                top: 100px;
+            }
+            #click{
+                top: 300px;
+            }
+            #button{
+                top: 350px;
+                margin-bottom: 200px;
+            }
+            #wish{
+                margin-top: 650px;
+            }
+
+        }
+
+         @media screen and (min-width: 500px) and (max-width: 1000px) {
+            .cake{
+                left: 400px;
+                size: 50%;
+                top: 100px;
+            }
+            #click{
+                top: 300px;
+            }
+            #button{
+                top: 350px;
+            }
+            #wish{
+                margin-top: 650px;
+            }
+
+        }
+
+        .plate {
+          width: 270px;
+          height: 110px;
+          position: absolute;
+          bottom: -10px;
+          left: -10px;
+          background-color: #ccc;
+          border-radius: 50%;
+          box-shadow: 0 2px 0 #b3b3b3, 0 4px 0 #b3b3b3, 0 5px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .cake > * {
+          position: absolute;
+        }
+
+        .layer {
+          position: absolute;
+          display: block;
+          width: 250px;
+          height: 100px;
+          border-radius: 50%;
+          background-color: #553c13;
+          box-shadow: 0 2px 0px #6a4b18, 0 4px 0px #33240b, 0 6px 0px #32230b, 0 8px 0px #31230b, 0 10px 0px #30220b, 0 12px 0px #2f220b, 0 14px 0px #2f210a, 0 16px 0px #2e200a, 0 18px 0px #2d200a, 0 20px 0px #2c1f0a, 0 22px 0px #2b1f0a, 0 24px 0px #2a1e09, 0 26px 0px #2a1d09, 0 28px 0px #291d09, 0 30px 0px #281c09;
+        }
+
+        .layer-top {
+          top: 0px;
+        }
+
+        .layer-middle {
+          top: 33px;
+        }
+
+        .layer-bottom {
+          top: 66px;
+        }
+
+        .icing {
+          top: 2px;
+          left: 5px;
+          background-color: #f0e4d0;
+          width: 240px;
+          height: 90px;
+          border-radius: 50%;
+        }
+        .icing:before {
+          content: "";
+          position: absolute;
+          top: 4px;
+          right: 5px;
+          bottom: 6px;
+          left: 5px;
+          background-color: #f4ebdc;
+          box-shadow: 0 0 4px #f6efe3, 0 0 4px #f6efe3, 0 0 4px #f6efe3;
+          border-radius: 50%;
+          z-index: 1;
+        }
+
+        .drip {
+          display: block;
+          width: 50px;
+          height: 60px;
+          border-bottom-left-radius: 25px;
+          border-bottom-right-radius: 25px;
+          background-color: #f0e4d0;
+        }
+
+        .drip1 {
+          top: 53px;
+          left: 5px;
+          transform: skewY(15deg);
+          height: 48px;
+          width: 40px;
+        }
+
+        .drip2 {
+          top: 69px;
+          left: 181px;
+          transform: skewY(-15deg);
+        }
+
+        .drip3 {
+          top: 54px;
+          left: 90px;
+          width: 80px;
+          border-bottom-left-radius: 40px;
+          border-bottom-right-radius: 40px;
+        }
+
+        .candle {
+          background-color: #7B020B;
+          width: 16px;
+          height: 50px;
+          border-radius: 8px / 4px;
+          top: -20px;
+          left: 50%;
+          margin-left: -8px;
+          z-index: 10;
+        }
+        .candle:before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 16px;
+          height: 8px;
+          border-radius: 50%;
+          background-color: #ad030f;
+        }
+
+        .flame {
+          position: absolute;
+          background-color: orange;
+          width: 15px;
+          height: 35px;
+          border-radius: 10px 10px 10px 10px / 25px 25px 10px 10px;
+          top: -34px;
+          left: 50%;
+          margin-left: -7.5px;
+          z-index: 10;
+          box-shadow: 0 0 10px rgba(255, 165, 0, 0.5), 0 0 20px rgba(255, 165, 0, 0.5), 0 0 60px rgba(255, 165, 0, 0.5), 0 0 80px rgba(255, 165, 0, 0.5);
+          transform-origin: 50% 90%;
+          animation: flicker 1s ease-in-out alternate infinite;
+        }
+
+        @keyframes flicker {
+          0% {
+            transform: skewX(5deg);
+            box-shadow: 0 0 10px rgba(255, 165, 0, 0.2), 0 0 20px rgba(255, 165, 0, 0.2), 0 0 60px rgba(255, 165, 0, 0.2), 0 0 80px rgba(255, 165, 0, 0.2);
+          }
+          25% {
+            transform: skewX(-5deg);
+            box-shadow: 0 0 10px rgba(255, 165, 0, 0.5), 0 0 20px rgba(255, 165, 0, 0.5), 0 0 60px rgba(255, 165, 0, 0.5), 0 0 80px rgba(255, 165, 0, 0.5);
+          }
+          50% {
+            transform: skewX(10deg);
+            box-shadow: 0 0 10px rgba(255, 165, 0, 0.3), 0 0 20px rgba(255, 165, 0, 0.3), 0 0 60px rgba(255, 165, 0, 0.3), 0 0 80px rgba(255, 165, 0, 0.3);
+          }
+          75% {
+            transform: skewX(-10deg);
+            box-shadow: 0 0 10px rgba(255, 165, 0, 0.4), 0 0 20px rgba(255, 165, 0, 0.4), 0 0 60px rgba(255, 165, 0, 0.4), 0 0 80px rgba(255, 165, 0, 0.4);
+          }
+          100% {
+            transform: skewX(5deg);
+            box-shadow: 0 0 10px rgba(255, 165, 0, 0.5), 0 0 20px rgba(255, 165, 0, 0.5), 0 0 60px rgba(255, 165, 0, 0.5), 0 0 80px rgba(255, 165, 0, 0.5);
+          }
+        }
+
+
+    @media only screen and (min-width: 600px) {
+
+    }
+    /* BALLOON */
+    span {
+                text-transform: uppercase;
+            }
+            .container {
+                width: 100%;
+                height: 420px;
+                padding: 10px;
+                margin: 0 auto;
+                position: relative;
+            }
+
+            .balloon {
+                width: 738px;
+                margin: 0 auto;
+                padding-top: 30px;
+                position: relative;
+                margin-top: 100px;
+            }
+            .balloon > div {
+                width: 104px;
+                height: 140px;
+                background: rgba(182, 15, 97, 0.9);
+                border-radius: 0;
+                border-radius: 50% 50% 50% 50%;
+                margin: 0 auto;
+                position: absolute;
+                padding: 10px;
+                box-shadow: inset 17px 7px 10px rgba(182, 15, 97, 0.9);
+                -webkit-transform-origin: bottom center;
+            }
+            .balloon > div:nth-child(1) {
+                background: rgba(182, 15, 97, 0.9);
+                left: 0px;
+                box-shadow: inset 10px 10px 10px rgba(135, 11, 72, 0.9);
+                -webkit-animation: balloon1 6s ease-in-out infinite;
+                -moz-animation: balloon1 6s ease-in-out infinite;
+                -o-animation: balloon1 6s ease-in-out infinite;
+                animation: balloon1 6s ease-in-out infinite;
+            }
+            .balloon > div:nth-child(1):before {
+                color: rgba(182, 15, 97, 0.9);
+            }
+            .balloon > div:nth-child(2) {
+                background: rgba(242, 112, 45, 0.9);
+                left: 80px;
+                box-shadow: inset 10px 10px 10px rgba(202, 85, 14, 0.9);
+                -webkit-animation: balloon2 6s ease-in-out infinite;
+                -moz-animation: balloon2 6s ease-in-out infinite;
+                -o-animation: balloon2 6s ease-in-out infinite;
+                animation: balloon2 6s ease-in-out infinite;
+            }
+            .balloon > div:nth-child(2):before {
+                color: rgba(242, 112, 45, 0.9);
+            }
+            .balloon > div:nth-child(3) {
+                background: rgba(45, 181, 167, 0.9);
+                left: 160px;
+                box-shadow: inset 10px 10px 10px rgba(25, 140, 129, 0.9);
+                -webkit-animation: balloon4 6s ease-in-out infinite;
+                -moz-animation: balloon4 6s ease-in-out infinite;
+                -o-animation: balloon4 6s ease-in-out infinite;
+                animation: balloon4 6s ease-in-out infinite;
+            }
+            .balloon > div:nth-child(3):before {
+                color: rgba(45, 181, 167, 0.9);
+            }
+            .balloon > div:nth-child(4) {
+                background: rgba(190, 61, 244, 0.9);
+                left: 240px;
+                box-shadow: inset 10px 10px 10px rgba(163, 14, 240, 0.9);
+                -webkit-animation: balloon1 5s ease-in-out infinite;
+                -moz-animation: balloon1 5s ease-in-out infinite;
+                -o-animation: balloon1 5s ease-in-out infinite;
+                animation: balloon1 5s ease-in-out infinite;
+            }
+            .balloon > div:nth-child(4):before {
+                color: rgba(190, 61, 244, 0.9);
+            }
+            .balloon > div:nth-child(5) {
+                background: rgba(180, 224, 67, 0.9);
+                left: 320px;
+                box-shadow: inset 10px 10px 10px rgba(148, 206, 34, 0.9);
+                -webkit-animation: balloon3 5s ease-in-out infinite;
+                -moz-animation: balloon3 5s ease-in-out infinite;
+                -o-animation: balloon3 5s ease-in-out infinite;
+                animation: balloon3 5s ease-in-out infinite;
+            }
+            .balloon > div:nth-child(5):before {
+                color: rgba(180, 224, 67, 0.9);
+            }
+            .balloon > div:nth-child(6) {
+                background: rgba(242, 194, 58, 0.9);
+                left: 400px;
+                box-shadow: inset 10px 10px 10px rgba(214, 177, 15, 0.9);
+                -webkit-animation: balloon2 3s ease-in-out infinite;
+                -moz-animation: balloon2 3s ease-in-out infinite;
+                -o-animation: balloon2 3s ease-in-out infinite;
+                animation: balloon2 3s ease-in-out infinite;
+            }
+            .balloon > div:nth-child(6):before {
+                color: rgba(242, 194, 58, 0.9);
+            }
+            .balloon > div:nth-child(7) {
+                background: rgba(255, 82, 90, 1);
+                left: 480px;
+                box-shadow: inset 10px 10px 10px rgba(235, 72, 70, 1);
+                -webkit-animation: balloon4 3s ease-in-out infinite;
+                -moz-animation: balloon4 3s ease-in-out infinite;
+                -o-animation: balloon4 3s ease-in-out infinite;
+                animation: balloon4 3s ease-in-out infinite;
+            }
+            .balloon > div:nth-child(7):before {
+                color: rgba(255, 82, 90, 1);
+            }
+            .balloon > div:nth-child(8) {
+                background: rgba(8, 89, 161, 0.95);
+                left: 560px;
+                box-shadow: inset 10px 10px 10px rgba(5, 69, 141, 0.95);
+                -webkit-animation: balloon3 3s ease-in-out infinite;
+                -moz-animation: balloon3 3s ease-in-out infinite;
+                -o-animation: balloon3 3s ease-in-out infinite;
+                animation: balloon3 3s ease-in-out infinite;
+            }
+            .balloon > div:nth-child(8):before {
+                color: rgba(8, 89, 161, 0.95);
+            }
+            .balloon > div:before {
+                color: rgba(182, 15, 97, 0.9);
+                position: absolute;
+                bottom: -11px;
+                left: 52px;
+                content:"▲";
+                font-size: 1em;
+            }
+            span {
+                font-size: 4.8em;
+                color: white;
+                position: relative;
+                top: 30px;
+                
+               
+            }
+            /*BALLOON 2 5*/
+            @-webkit-keyframes balloon1 {
+                0%, 100% {
+                    -webkit-transform: translateY(0) rotate(-6deg);
+                }
+                50% {
+                    -webkit-transform: translateY(-20px) rotate(8deg);
+                }
+            }
+            @-moz-keyframes balloon1 {
+                0%, 100% {
+                    -moz-transform: translateY(0) rotate(-6deg);
+                }
+                50% {
+                    -moz-transform: translateY(-20px) rotate(8deg);
+                }
+            }
+            @-o-keyframes balloon1 {
+                0%, 100% {
+                    -o-transform: translateY(0) rotate(-6deg);
+                }
+                50% {
+                    -o-transform: translateY(-20px) rotate(8deg);
+                }
+            }
+            @keyframes balloon1 {
+                0%, 100% {
+                    transform: translateY(0) rotate(-6deg);
+                }
+                50% {
+                    transform: translateY(-20px) rotate(8deg);
+                }
+            }
+            /* BAllOON 3 6*/
+            @-webkit-keyframes balloon2 {
+                0%, 100% {
+                    -webkit-transform: translateY(0) rotate(6eg);
+                }
+                50% {
+                    -webkit-transform: translateY(-30px) rotate(-8deg);
+                }
+            }
+            @-moz-keyframes balloon2 {
+                0%, 100% {
+                    -moz-transform: translateY(0) rotate(6deg);
+                }
+                50% {
+                    -moz-transform: translateY(-30px) rotate(-8deg);
+                }
+            }
+            @-o-keyframes balloon2 {
+                0%, 100% {
+                    -o-transform: translateY(0) rotate(6deg);
+                }
+                50% {
+                    -o-transform: translateY(-30px) rotate(-8deg);
+                }
+            }
+            @keyframes balloon2 {
+                0%, 100% {
+                    transform: translateY(0) rotate(6deg);
+                }
+                50% {
+                    transform: translateY(-30px) rotate(-8deg);
+                }
+            }
+            /* BAllOON 1 8*/
+            @-webkit-keyframes balloon3 {
+                0%, 100% {
+                    -webkit-transform: translate(0, -10px) rotate(6eg);
+                }
+                50% {
+                    -webkit-transform: translate(-20px, 30px) rotate(-8deg);
+                }
+            }
+            @-moz-keyframes balloon3 {
+                0%, 100% {
+                    -moz-transform: translate(0, -10px) rotate(6eg);
+                }
+                50% {
+                    -moz-transform: translate(-20px, 30px) rotate(-8deg);
+                }
+            }
+            @-o-keyframes balloon3 {
+                0%, 100% {
+                    -o-transform: translate(0, -10px) rotate(6eg);
+                }
+                50% {
+                    -o-transform: translate(-20px, 30px) rotate(-8deg);
+                }
+            }
+            @keyframes balloon3 {
+                0%, 100% {
+                    transform: translate(0, -10px) rotate(6eg);
+                }
+                50% {
+                    transform: translate(-20px, 30px) rotate(-8deg);
+                }
+            }
+            /* BAllOON 4 7*/
+            @-webkit-keyframes balloon4 {
+                0%, 100% {
+                    -webkit-transform: translate(10px, -10px) rotate(-8eg);
+                }
+                50% {
+                    -webkit-transform: translate(-15px, 20px) rotate(10deg);
+                }
+            }
+            @-moz-keyframes balloon4 {
+                0%, 100% {
+                    -moz-transform: translate(10px, -10px) rotate(-8eg);
+                }
+                50% {
+                    -moz-transform: translate(-15px, 10px) rotate(10deg);
+                }
+            }
+            @-o-keyframes balloon4 {
+                0%, 100% {
+                    -o-transform: translate(10px, -10px) rotate(-8eg);
+                }
+                50% {
+                    -o-transform: translate(-15px, 10px) rotate(10deg);
+                }
+            }
+            @keyframes balloon4 {
+                0%, 100% {
+                    transform: translate(10px, -10px) rotate(-8eg);
+                }
+                50% {
+                    transform: translate(-15px, 10px) rotate(10deg);
+                }
+            }
+            h1 {
+                position: relative;
+                top: 200px;
+                text-align: center;
+                color: white;
+                font-size: 3.5em;
+            }
+
+        /* BODY/TEXT */
+        body{
+            background-image: url("bg.jpg");
+        }
+
+        #header{
+            font-family: trebuchet ms; 
+            color: #ee224a; 
+            font-size: 65px;
+            margin-top: -150px;
+        }
+        #click{
+            font-family: comfortaa; 
+            color: orange; 
+            font-size: 18px;
+            margin-top: -70px;
+        }
+        #wish{
+            font-family: helvetica; 
+            color: #fffcaf; 
+            font-size: 21px; 
+            text-align: justify;
+            margin-top: 100px;
+            margin-left: 5px;
+            margin-right: 5px;
+        }
+        #button{
+            border-radius: 8px;
+            background-color: white;
+            color: black;
+            font-size: 25px;
+            padding: 20px;
+            border: 5px solid #f44336;
+            top: -50px;
+        }
+        #button:hover {
+          background-color: #f44336;
+          color: white;
+        }   
+
+    </style>
+
+</head>
+
+<body style="color:#fff;">
+    <div id = "board"></div>
+
+<center>
+    
+  <div class="cake">
+    <div class="plate"></div>
+    <div class="layer layer-bottom"></div>
+    <div class="layer layer-middle"></div>
+    <div class="layer layer-top"></div>
+    <div class="icing"></div>
+    <div class="drip drip1"></div>
+    <div class="drip drip2"></div>
+    <div class="drip drip3"></div>
+    <div class="candle">
+        <div class="flame"></div>
+    </div>
+</div>
+
+<h1 id = "header">HAPPY 18TH BIRTHDAY!!!</h1>
+ <link href="https://fonts.googleapis.com/css?family=Wendy+One" rel="stylesheet" type="text/css">
+
+        <div class="container">
+            <div class="balloon">
+                <div><span>3</span>
+                </div>
+                <div><span>0</span>
+                </div>
+                <div><span>0</span>
+                </div>
+                <div><span>3</span>
+                </div>
+                <div><span>2</span>
+                </div>
+                <div><span>0</span>
+                </div>
+                <div><span>2</span>
+                </div>
+                <div><span>0</span>
+                </div>
+
+        </div>
+        
+  <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
+
+  </center>
+
+    <h2 id = "click"> Click anywhere on the screen to celebrate :D</h2>
+
+ <button id = "button" onclick = "toggle()">A few words</button>
+
+        <div id = "wish" style = "display: none">
+            Yo :) Sometimes I just imagine how life would suck so much there's no-one like you to share all kinds of stuffs. That midnight on 22/8/2016, when I said "I used to think I have no-one to talk to", you replied "Yeah you used to but not anymore". Man, how did I even deserve a friend like you? Thank you, thank you and <b>THANK YOU </b> for always being so supportive and listen to all my shit :) I'm always grateful for our friendship, which has been one of the greatest things that ever happened in my life. Don't forget that I'm always here for you whenever you need me :)
+
+        <br><br>
+
+            Today 18 years ago was a magical day - 30/03/2002. A beautiful symmetry. Oddly satisfying for a numberphile like me :) It was the day that God gave birth to a beautiful soul, full of blessings. Today, the same numbers rearrange themselves for another magical day of an important milestone - 30/03/2020. It's weird, isn't it? Before, you couldn't legally go to a bar and suddenly after a night sleep, you can (but you still can't because bars are already closed because of that damned coronavirus :)))))) I know it sucks that social distancing happens right now but I'm glad that you get to celebrate this very special day with your loved ones at home :D
+
+        <br><br>
+
+            I wish you a fulfilling life that you will always enjoy to the fullest as you always do! A life where you rise up every day with enthusiasm and go to sleep with positive takeaways for the day. I'm really excited for all your future adventures waiting ahead! New doors that will lead to plenty opportunities in academics, career, extracurricular and social life. New knowledge that will never cease to amaze you. New experiences and endeavors that will broaden your horizon and worldview. New challenges that will toughen you up and teach you valuable lessons. New friendships that will last beyond college life. And perhaps a relationship that will spice up your life with someone who will love you dearly ;) Life is too short to last long and there are so many exciting things to look forward to :) Good luck with fulfilling all your life goals you wrote down some time ago (with some of them requiring a boyfriend right? ;)) Cruise into the future in your own way and I'm sure you'll have a fantastic life ahead hehe!
+
+        <br><br>
+
+            I wish I could be there to celebrate with you, urgh damn you covid-19. But anyway, have a blast, enjoy your special day and here to an awesome 18th year!!!
+
+        <br><br>
+
+        - Your friend whom you hated since 6th grade
+        </div>
+</body>
+
+<script>
+        var brd = document.createElement("DIV");
+        document.body.insertBefore(brd, document.getElementById("board"));
+
+        seeds = [];
+        particles = [];
+
+        const fwkPtcIniV = 0.5;
+        const fwkSedIniV = 0.5;
+        const fwkPtcIniT = 2500;
+        const fwkSedIniT = 1000;
+        const a = 0.0005; 
+        const g = 0.0005;
+        const v = 0.3;
+        const cursorXOffset = 5;
+        const cursorYOffset = 0;
+
+
+        function newFireworkParticle(x, y, angle)
+        {
+            var fwkPtc = document.createElement("DIV");
+            fwkPtc.setAttribute('class', 'fireWorkParticle');
+            fwkPtc.time = fwkPtcIniT;
+            while(angle > 360)
+                angle -= 360;
+            while(angle < 0)
+                angle += 360;
+            fwkPtc.velocity = [];
+            if(angle > 270)
+            {
+                fwkPtc.velocity.x = fwkPtcIniV * Math.sin(angle * Math.PI / 180) * (1 - Math.random() * v);
+                fwkPtc.velocity.y = fwkPtcIniV * Math.cos(angle * Math.PI / 180) * (1 - Math.random() * v);
+            }
+            else if(angle > 180)
+            {
+                fwkPtc.velocity.x = fwkPtcIniV * Math.sin(angle * Math.PI / 180) * (1 - Math.random() * v);
+                fwkPtc.velocity.y = fwkPtcIniV * Math.cos(angle * Math.PI / 180) * (1 - Math.random() * v);
+            }
+            else if(angle > 90)
+            {
+                fwkPtc.velocity.x = fwkPtcIniV * Math.sin(angle * Math.PI / 180) * (1 - Math.random() * v);
+                fwkPtc.velocity.y = fwkPtcIniV * Math.cos(angle * Math.PI / 180) * (1 - Math.random() * v);
+            }
+            else
+            {
+                fwkPtc.velocity.x = fwkPtcIniV * Math.sin(angle * Math.PI / 180) * (1 - Math.random() * v);
+                fwkPtc.velocity.y = fwkPtcIniV * Math.cos(angle * Math.PI / 180) * (1 - Math.random() * v);
+            }
+            fwkPtc.position = [];
+            fwkPtc.position.x = x;
+            fwkPtc.position.y = y;
+            fwkPtc.style.left = fwkPtc.position.x + 'px';
+            fwkPtc.style.top = fwkPtc.position.y + 'px';
+            if(particles == null)
+                particles = [];
+            particles.push(fwkPtc);
+            return fwkPtc;
+        }
+
+        document.addEventListener("click", newFireWorkOnClick);
+
+        function newFireWorkOnClick(event)
+        {
+            newFireworkSeed(event.pageX - brd.offsetLeft + cursorXOffset, event.pageY - brd.offsetTop + cursorYOffset);
+        }
+
+        function newFireworkSeed(x, y)
+        {
+            var fwkSed = document.createElement("DIV");
+            fwkSed.setAttribute('class', 'fireWorkSeed');
+            brd.appendChild(fwkSed);
+            fwkSed.time = fwkSedIniT;
+            fwkSed.velocity = [];
+            fwkSed.velocity.x = 0;
+            fwkSed.velocity.y = fwkSedIniV;
+            fwkSed.position = [];
+            fwkSed.position.x = x;
+            fwkSed.position.y = y;
+            fwkSed.style.left = fwkSed.position.x + 'px';
+            fwkSed.style.top = fwkSed.position.y + 'px';
+            if(seeds == null)
+                seeds = [];
+            seeds.push(fwkSed);
+            return fwkSed;
+        }
+        
+        function newFireWorkStar(x, y)
+        {
+            var fwkBch = document.createElement("DIV");
+            fwkBch.setAttribute('class', 'fireWorkBatch');
+            var a = 0;
+            while(a < 360)
+            {
+                var fwkPtc = newFireworkParticle(x, y, a);
+                fwkBch.appendChild(fwkPtc);
+                a += 5;
+            }
+            brd.appendChild(fwkBch);
+        }
+
+        var before = Date.now();
+        var id = setInterval(frame, 5);
+        
+        function frame()
+        {
+            var current = Date.now();
+            var deltaTime = current - before;
+            before = current;
+            for(i in seeds)
+            {
+                var fwkSed = seeds[i];
+                fwkSed.time -= deltaTime;
+                if(fwkSed.time > 0)
+                {
+                    fwkSed.velocity.x -= fwkSed.velocity.x * a * deltaTime;
+                    fwkSed.velocity.y -= g * deltaTime + fwkSed.velocity.y * a * deltaTime;
+                    fwkSed.position.x += fwkSed.velocity.x * deltaTime;
+                    fwkSed.position.y -= fwkSed.velocity.y * deltaTime;
+                    fwkSed.style.left = fwkSed.position.x + 'px';
+                    fwkSed.style.top = fwkSed.position.y + 'px';
+                }
+                else
+                {
+                    newFireWorkStar(fwkSed.position.x, fwkSed.position.y);
+                    fwkSed.parentNode.removeChild(fwkSed);
+                    seeds.splice(i, 1);
+                }
+            }
+            for(i in particles)
+            {
+                var fwkPtc = particles[i];
+                fwkPtc.time -= deltaTime;
+                if(fwkPtc.time > 0)
+                {
+                    fwkPtc.velocity.x -= fwkPtc.velocity.x * a * deltaTime;
+                    fwkPtc.velocity.y -= g * deltaTime + fwkPtc.velocity.y * a * deltaTime;
+                    fwkPtc.position.x += fwkPtc.velocity.x * deltaTime;
+                    fwkPtc.position.y -= fwkPtc.velocity.y * deltaTime;
+                    fwkPtc.style.left = fwkPtc.position.x + 'px';
+                    fwkPtc.style.top = fwkPtc.position.y + 'px';
+                }
+                else
+                {
+                    fwkPtc.parentNode.removeChild(fwkPtc);
+                    particles.splice(i, 1);
+                }
+            }
+        }
+
+    function toggle() {
+          var x = document.getElementById("wish");
+          if (x.style.display === "none") {
+            x.style.display = "block";
+          } else {
+            x.style.display = "none";
+          }
+        }
+
+    window.open = function() {};
+            window.print = function() {};
+            // Support hover state for mobile.
+            if (false) {
+                window.ontouchstart = function() {};
+            }
+</script>
+</html>
